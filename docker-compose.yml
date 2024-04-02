@@ -9,18 +9,15 @@ services:
       - '3000:3000'
     volumes:
       - '.:/app'
-    environment:
-      SECRET_KEY_BASE:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/motoradmin
+    env_file:
+      - .env 
 
   postgres:
     image: 'postgres:13.4'
     volumes:
       - 'postgres:/var/lib/postgresql/data'
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: motoradmin
+    env_file:
+      - .env
 
 volumes:
-  postgres:
+  postgres: 
